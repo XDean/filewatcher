@@ -1,0 +1,3 @@
+on $handler.fileType $handler.updateType {
+$lib.handleCode($lib.toEscapeString($handler.code))
+}

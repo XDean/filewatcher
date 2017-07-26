@@ -1,0 +1,26 @@
+#if($command.sync)
+	#set($sync = 'sync')
+#else
+	#set($sync = 'async')
+#end
+#if($lib.deleteBlankLine($command.workDirectory).equals(''))
+	#set($dir = '')
+#else
+	#set($dir = ' workingDirectory ' + $command.workDirectory)
+#end
+#if($lib.deleteBlankLine($command.path).equals(''))
+	#set($path = '')
+#else
+	#set($path = ' findBinaryIn ' + $command.path)
+#end
+#set($cmd = $lib.deleteBlankLine($command.command))
+#if($cmd.equals(''))
+	#set($code = '""')
+#else
+	#set($code = $lib.wrapCommand($cmd))
+#end
+#set($env = '')
+#foreach($entry in $command.environment.entrySet())
+	#set($env = $env + ' environment "' + $entry.key + '","' + $entry.value +'"')
+#end
+command $code$dir$path$env run $sync

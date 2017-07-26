@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="5.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.wenzhe.filewatcher.gui.controller.DslFilterController">
+   <children>
+      <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#up" text="↑" />
+            <Button mnemonicParsing="false" onAction="#delete" text="-" />
+            <Label text="filter">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="filterTypeBox" />
+            <ComboBox fx:id="fileTypeBox" />
+            <ComboBox fx:id="nameOrPathBox" />
+            <ComboBox fx:id="methodBox" />
+            <StackPane>
+               <children>
+                  <Label fx:id="hintLabel" text="updatedFile, updatedType-&gt;" visible="false" />
+                  <CheckBox fx:id="caseSensitiveCheck" mnemonicParsing="false" text="case sensitive" />
+               </children>
+            </StackPane>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </HBox>
+      <TextArea fx:id="codeArea" prefRowCount="1" prefWidth="200.0" stylesheets="@../css/comp/noScrollTextArea.css" wrapText="true" VBox.vgrow="ALWAYS" />
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</VBox>

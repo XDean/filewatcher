@@ -1,0 +1,3 @@
+#foreach($watcher in $context.watchers)
+	#parse("watcher.vm")
+#end

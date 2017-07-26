@@ -1,0 +1,23 @@
+#if($filter.include)
+	#set($include = 'include')
+#else
+	#set($include = 'exclude')
+#end
+#if($filter.caseSensitive)
+	#set($case = '')
+#else
+	#set($case = 'cases insensitive ')
+#end
+#if($filter.codeWrapped)
+	#set($left = '{ 
+')
+	#set($right = '
+}')
+	#set($code = $lib.handleCode($filter.code))
+#else
+	#set($left = '')
+	#set($right = '')
+	#set($code = $lib.toEscapeString($filter.code))
+#end
+## fix INDENT and end blank lines
+filter $include $filter.fileType $filter.namePath $case$filter.method $left$code$right

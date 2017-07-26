@@ -1,0 +1,19 @@
+#addTab {
+    -fx-background-color: transparent;
+}
+#addTab:selected .focus-indicator {
+    -fx-border-color: transparent;
+}
+
+#addButton {
+    -fx-background-color: transparent;
+}
+
+#addButton:hover {
+	-fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+	-fx-color: -fx-hover-base;
+}
+
+#addButton:pressed {
+	-fx-color: -fx-pressed-base;
+}

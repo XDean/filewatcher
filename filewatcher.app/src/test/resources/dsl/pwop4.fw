@@ -1,0 +1,102 @@
+String p4bin = "C:\\Program Files\\Perforce"
+String localRoot = "C:/Users/weliu/code/pwo/pwo"
+
+def runP4Cmd = { String... cmd ->
+  Command p4cmd = command cmd  \
+       findBinaryIn p4bin  \
+       environment "P4CLIENT", "pwo_main"  \
+       environment "P4USER", "weliu"  \
+       environment "P4PORT", "p4proxy-brion.asml.com:1666"  \
+       pipe error 
+      
+  int exitCode = p4cmd.run sync
+  if (exitCode == 0) {
+    byte[] errBytes = new byte[1024];
+    int byteCount = p4cmd.getProcess().getErrorStream().read(errBytes);
+    if (byteCount != -1) {
+      System.err.println(new String(errBytes, 0, byteCount));
+      return -1;
+    }
+  }
+  return 0;
+}
+
+def deleteFromP4 = { String updatedFile ->
+  runP4Cmd "p4.exe", "revert", updatedFile 
+}
+
+def doModifedToP4 = { String updatedFile ->
+  runP4Cmd "p4.exe", "edit", "-c", "default", updatedFile 
+}
+
+def modifedToP4 = { String updatedFile ->
+  if (doModifedToP4(updatedFile) != 0) {
+    addToP4(updatedFile);
+  }
+}
+
+def addToP4 = { String updatedFile ->
+  runP4Cmd "p4.exe", "add", "-d", "-f", "-c", "default", updatedFile 
+}
+
+
+String javaDir = "C:/Program Files/Java/jdk1.8.0_45/bin";
+String jarInjectorDir = "C:/Documents and Settings/weliu/code/jarinjector/target";
+
+def injectJar = { String f ->
+    def cmd = ["java", "-jar", "jarinjector.jar", f, \
+          localRoot + "/gui/com.asml.pwo.mdp.gui.ui.thirdparty/lib" \
+          ].toArray(new String[0])
+    
+    command cmd  \
+    workingDirectory jarInjectorDir  \
+    findBinaryIn javaDir  \
+    run sync 
+}
+
+start recursively watch localRoot  \
+filter include folder path equalsTo(
+    localRoot + "/gui", 
+    localRoot + "/server/python/gui_interface",
+    localRoot + "/xsd"
+) \
+filter include file path equalsTo(
+    localRoot + "/Makefile", 
+    localRoot + "/version.dat"
+) \
+filter exclude folder path contains(
+    "/gen-py/", "/target/", "/bin/", "/.settings/"
+) \
+filter exclude folder path equalsTo(
+    localRoot + "/com.asml.pwo.mdp.gui.doc/",
+    localRoot + "/com.asml.pwo.mdp.gui.dao.xml/src/main/resources/xsd"
+) \
+filter exclude file name extension(
+    "pyo", "pyc", ".class", "jar"
+) \
+filter exclude file readOnly  \
+on file created addToP4 \
+on file modified modifedToP4 \
+on file deleted deleteFromP4
+
+
+start recursively watch localRoot  \
+filter include folder path equalsTo(
+    localRoot + "/gui"
+) \
+filter include file path equalsTo(
+    localRoot + "/version.dat"
+) \
+filter exclude folder path contains(
+    "/gen-py/", "/target/", "/bin/", "/.settings/"
+) \
+filter exclude folder path equalsTo(
+    localRoot + "/com.asml.pwo.mdp.gui.doc/"
+) \
+filter exclude file name extension(
+    "pyo", "pyc", ".class", "jar"
+) \
+filter exclude file readOnly  \
+on file modified injectJar
+
+

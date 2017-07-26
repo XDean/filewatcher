@@ -1,0 +1,11 @@
+#if($header.start)
+	#set($switch = 'start') 
+#else
+	#set($switch = 'stop')
+#end
+#if($header.recursively)
+	#set($mode = 'recursively')
+#else
+	#set($mode = 'to')
+#end
+$switch $mode watch "$lib.toEscapeString($header.path.trim())"

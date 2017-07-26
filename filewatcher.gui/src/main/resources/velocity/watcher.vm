@@ -1,0 +1,9 @@
+#set($header=$watcher.header)
+#parse("header.vm") \
+#foreach($filter in $watcher.filters)
+#parse("filter.vm") \
+#end
+#foreach($handler in $watcher.handlers)
+#parse("handler.vm") #if($velocityCount!=$watcher.handlers.size())\
+#end
+#end

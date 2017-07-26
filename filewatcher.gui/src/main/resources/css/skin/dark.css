@@ -1,0 +1,262 @@
+* {
+	-font0: "Arial";
+	-bg0: #202022;
+	-bg1: derive(-bg0,15%);
+	-bg2: derive(-bg0,30%);
+	-bg3: derive(-bg0,45%);
+	-bg4: derive(-bg0,60%);
+	-fg0: #FFFFFF;
+	-fg1: derive(-fg0,-15%);
+	-fg2: derive(-fg0,-30%);
+	-hl0: #007ACC;
+	/* -hl1: #005288; */
+	-fghl0: -fg1;
+}
+
+/****************** normal *******************/
+.root {
+	-fx-background-color: -bg0;
+}
+
+.arrow {
+	-fx-background-color: -bg0, -fg0;
+}
+/***************** menu ********************/
+.menu-bar {
+	-fx-background-color: -bg0;
+}
+
+.menu-item:focused {
+     -fx-background-color: -hl0;
+}
+
+.menu-item:focused .label {
+    -fx-text-fill: -bg1;
+}
+
+.context-menu {
+    -fx-background-color: -bg1;
+}
+
+.menu .label{
+    -fx-text-fill: -fg0;
+}
+
+.radio-menu-item:checked > .left-container > .radio {
+    -fx-background-color: -fg0;
+}
+.radio-menu-item:focused:checked > .left-container > .radio {
+    -fx-background-color: -fghl0;
+}
+
+/************** tool bar ********************/
+.tool-bar {
+	-fx-background-color: -bg0;
+	-fx-border-width: 1;
+	-fx-border-color: -bg1;
+}
+
+.tool-bar .line{
+	-fx-border-width: 0.5;
+	-fx-border-color: -bg1;
+}
+
+.tool-bar .button  {
+    -fx-background-color: transparent;
+	-fx-font-family: -font0;
+    -fx-text-fill: -fg0;
+    -fx-fill: -fg0;
+}
+.tool-bar .button .glyph-icon {
+    -fx-text-fill: -fg0;
+    -fx-fill: -fg0;
+}
+
+/****************** button *******************/
+.button {
+    -fx-background-color: -bg1;
+	-fx-font-family: -font0;
+    -fx-text-fill: -fg0;
+}
+
+.tool-bar .button:hover,
+.button:hover {
+    -fx-background-color: -bg2;
+} 
+
+.tool-bar .button:focused,
+.button:focused  {
+    -fx-border-color: -hl0;
+	-fx-border-width: 0.1em;
+	-fx-padding: 0.23333em 0.566666em 0.233333em 0.566666em; 
+}
+
+/****************** title ********************/
+.titled-pane {
+	-fx-animated:false;
+}
+
+.title {
+	-fx-background-color: -bg2, -bg0, -bg1;
+}
+
+.titled-pane .content {
+	-fx-background-color: -bg0;
+	-fx-border-color: -bg1;
+}
+
+/******************** tab ***********************/
+.background .tab-header-background, .background .tab-content-area, .tab-pane .tab-header-background{
+	-fx-background-color: -bg0;
+	-fx-border-color: -bg1;
+	-fx-border-width: 1;
+}
+
+.tab{
+	-fx-background-color: -bg1;
+}
+
+.tab-close-button {
+	-fx-background-color: -fg1;
+}
+
+.tab-content-area {
+    -fx-background-color: -bg1;
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 2, 0;
+    -fx-padding: 1;
+}
+
+/****************** comboBox *******************/
+.combo-box {
+	-fx-background-color: -bg1 -fg1 -bg1 -bg2;
+}
+
+.combo-box:hover {
+	-fx-background-color: -bg2 -fg0 -bg2 -bg3;
+}
+
+.combo-box:focused {
+	-fx-border-color: -hl0;
+	-fx-border-width: 0.1em;
+	-fx-padding: -0.1em;
+}
+
+.combo-box-popup .list-cell {
+	-fx-padding: 4 0 4 5;
+}
+
+.combo-box-popup .list-cell:even {
+	-fx-background-color: -bg1;
+}
+
+.combo-box-popup .list-cell:odd {
+	-fx-background-color: -bg2;
+}
+
+.combo-box-popup .list-cell:hover { 
+	-fx-border-color: -hl0;
+	-fx-border-width: 2;
+	-fx-padding: 2 -2 2 3;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * CheckBox                                                                    *
+ *                                                                             *
+ ******************************************************************************/
+
+.check-box {
+    -fx-label-padding: 0.0em 0.0em 0.0em 0.416667em; /* 0 0 0 5 */
+    -fx-text-fill: -fx-text-background-color;
+}
+
+.check-box > .box {
+	-fx-background-color: -bg2;
+    -fx-background-radius: 3, 2, 1;
+    -fx-padding: 0.166667em 0.166667em 0.25em 0.25em; /* 2 2 3 3 */
+}
+
+.check-box > .box:hover {
+	-fx-border-color: -hl0;
+    -fx-border-radius: 3, 2, 1;  
+    -fx-padding: 0.083333em 0.083333em 0.1666667em 0.1666667em;
+}
+/****************** text *******************/
+.text{
+	-fx-fill: -fg0;
+}
+
+.label {
+    -fx-text-fill: -fg0;
+}
+
+.text-field {
+    -fx-background-color: -bg0;
+	-fx-border-color: -bg1;
+	-fx-text-fill: -fg0;
+}
+
+.text-field:focused {
+    -fx-background-insets: 1 0 1 1, 1 0 1 1, 3 2 3 3;
+    -fx-background-radius: 2 0 0 2, 1 0 0 1, 0;
+	-fx-border-color: -hl0;
+}
+/*******************************************************************************
+ *                                                                             *
+ * TextArea                                                                    *
+ *                                                                             *
+ ******************************************************************************/
+
+.text-area {
+    -fx-background-color: -bg0;
+	-fx-text-fill: -fg0;
+}
+
+.text-area .content {
+	-fx-background-color: -bg0;
+}
+
+.text-area,
+.text-area > .scroll-pane ,
+.text-area .viewport {
+	-fx-border-color: -bg2;
+	-fx-background-insets: 0; 
+}
+
+.text-area:focused,
+.text-area > .scroll-pane:focused ,
+.text-area .viewport:focused {
+	-fx-border-color: -hl0;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * SplitPane                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+.split-pane > .split-pane-divider {
+	-fx-color: -bg1;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * ScrollPane                                                                  *
+ *                                                                             *
+ ******************************************************************************/
+.scroll-pane,
+.scroll-pane .viewport{
+	-fx-background-color: -bg0;
+} 
+
+/*******************************************************************************
+ *                                                                             *
+ * ScrollBar                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+ .scroll-bar {
+	 -fx-base: -bg1; 
+ }
+
+/* #headerContainer, #filterContainer, # */
+@import url( "public.css" );

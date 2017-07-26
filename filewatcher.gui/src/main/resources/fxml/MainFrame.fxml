@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="850.0" stylesheets="@../css/comp/icon.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.wenzhe.filewatcher.gui.controller.MainFrameController">
+	<children>
+		<MenuBar>
+			<menus>
+				<Menu mnemonicParsing="false" text="File">
+					<items>
+						<MenuItem mnemonicParsing="false" onAction="#newFile" text="New">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                     <graphic>
+                        <FontAwesomeIconView glyphName="FILE_ALT" />
+                     </graphic></MenuItem>
+						<MenuItem mnemonicParsing="false" onAction="#open" text="Open...">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                     <graphic>
+                        <FontAwesomeIconView glyphName="FOLDER_OPEN_ALT" />
+                     </graphic></MenuItem>
+                  <Menu fx:id="openRecentMenu" mnemonicParsing="false" text="Open Recent">
+                     <items>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" onAction="#clearRecent" text="Clear Recent" />
+                     </items></Menu>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="closeItem" mnemonicParsing="false" onAction="#close" text="Close">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="CLOSE" />
+                     </graphic></MenuItem>
+						<MenuItem fx:id="saveItem" mnemonicParsing="false" onAction="#save" text="Save">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                     <graphic>
+                        <FontAwesomeIconView glyphName="SAVE" />
+                     </graphic></MenuItem>
+						<MenuItem fx:id="saveAsItem" mnemonicParsing="false" onAction="#saveAs" text="Save as...">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem fx:id="revertItem" mnemonicParsing="false" onAction="#revert" text="Revert" />
+						<SeparatorMenuItem mnemonicParsing="false" />
+						<MenuItem mnemonicParsing="false" onAction="#exit" text="Exit" />
+					</items>
+				</Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+              <items>
+                <MenuItem fx:id="undoItem" mnemonicParsing="false" onAction="#undo" text="Undo">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="Z" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                     <graphic>
+                        <FontAwesomeIconView glyphName="UNDO" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem fx:id="redoItem" mnemonicParsing="false" onAction="#redo" text="Redo">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="Y" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                     <graphic>
+                        <FontAwesomeIconView glyphName="REPEAT" />
+                     </graphic>
+                  </MenuItem>
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Run">
+              <items>
+                <MenuItem fx:id="runItem" mnemonicParsing="false" onAction="#runFw" text="Run">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="PLAY" />
+                     </graphic></MenuItem>
+                  <MenuItem fx:id="stopItem" mnemonicParsing="false" onAction="#stopFw" text="Stop">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="STOP" />
+                     </graphic></MenuItem>
+              </items>
+            </Menu>
+				<Menu mnemonicParsing="false" text="Help">
+					<items>
+                  <Menu fx:id="skinMenu" mnemonicParsing="false" text="Skin" />
+						<MenuItem mnemonicParsing="false" onAction="#help" text="Help">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="QUESTION_CIRCLE" />
+                     </graphic></MenuItem>
+						<SeparatorMenuItem mnemonicParsing="false" />
+						<MenuItem mnemonicParsing="false" onAction="#about" text="About">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="EXCLAMATION_CIRCLE" />
+                     </graphic></MenuItem>
+					</items>
+				</Menu>
+			</menus>
+		</MenuBar>
+		<ToolBar prefHeight="30.0" prefWidth="200.0">
+			<items>
+				<Separator orientation="VERTICAL" />
+				<Button fx:id="newButton" mnemonicParsing="false" onAction="#newFile">
+					<tooltip>
+						<Tooltip autoHide="true" text="New" />
+					</tooltip>
+               <graphic>
+                  <FontAwesomeIconView glyphName="FILE_ALT" size="15" />
+               </graphic></Button>
+				<Button fx:id="openButton" mnemonicParsing="false" onAction="#open">
+					<tooltip>
+						<Tooltip text="Open" />
+					</tooltip>
+               <graphic>
+                  <FontAwesomeIconView glyphName="FOLDER_OPEN_ALT" size="15" />
+               </graphic></Button>
+				<Button fx:id="saveButton" mnemonicParsing="false" onAction="#save">
+					<tooltip>
+						<Tooltip text="Save" />
+					</tooltip>
+               <graphic>
+                  <FontAwesomeIconView glyphName="SAVE" size="15" />
+               </graphic></Button>
+				<Separator orientation="VERTICAL" />
+            <Button fx:id="undoButton" mnemonicParsing="false" onAction="#undo">
+               <tooltip>
+                  <Tooltip text="Undo" />
+               </tooltip>
+               <graphic>
+                  <FontAwesomeIconView glyphName="UNDO" size="15" />
+               </graphic>
+            </Button>
+            <Button fx:id="redoButton" mnemonicParsing="false" onAction="#redo">
+               <tooltip>
+                  <Tooltip text="Redo" />
+               </tooltip>
+               <graphic>
+                  <FontAwesomeIconView glyphName="REPEAT" size="15" />
+               </graphic>
+            </Button>
+            <Separator orientation="VERTICAL" />
+				<Button fx:id="runButton" mnemonicParsing="false" onAction="#runFw">
+					<tooltip>
+						<Tooltip text="Run" />
+					</tooltip>
+               <graphic>
+                  <FontAwesomeIconView glyphName="PLAY" size="15" />
+               </graphic></Button>
+				<Button fx:id="stopButton" mnemonicParsing="false" onAction="#stopFw">
+					<tooltip>
+						<Tooltip text="Stop" />
+					</tooltip>
+               <graphic>
+                  <FontAwesomeIconView glyphName="STOP" size="13" />
+               </graphic></Button>
+				<Separator orientation="VERTICAL" />
+			</items>
+		</ToolBar>
+		<TabPane fx:id="contentTabPane" stylesheets="@../css/comp/addTab.css" VBox.vgrow="ALWAYS">
+			<tabs>
+				<Tab id="addTab" fx:id="addTab" closable="false">
+					<graphic>
+						<Button id="addButton" fx:id="addTabButton" onAction="#addTab" translateX="-2.0" translateY="2.0">
+                     <graphic>
+                        <FontAwesomeIconView id="addIcon" glyphName="PLUS_SQUARE_ALT" size="20" />
+                     </graphic>
+                     <padding>
+                        <Insets bottom="-0.1" left="-0.1" right="-0.1" top="-0.1" />
+                     </padding></Button>
+					</graphic>
+				</Tab>
+			</tabs></TabPane>
+		<TextField fx:id="msgField" editable="false" />
+	</children>
+   <padding>
+      <Insets bottom="1.0" />
+   </padding>
+</VBox>

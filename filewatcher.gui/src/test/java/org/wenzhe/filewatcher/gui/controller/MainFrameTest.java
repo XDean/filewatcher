@@ -1,11 +1,8 @@
 package org.wenzhe.filewatcher.gui.controller;
 
-import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.*;
 import static org.testfx.api.FxAssert.verifyThat;
-import static org.testfx.matcher.base.NodeMatchers.hasText;
-import static org.testfx.matcher.base.NodeMatchers.isDisabled;
-import static org.testfx.matcher.base.NodeMatchers.isEnabled;
+import static org.testfx.matcher.base.NodeMatchers.*;
 
 import java.io.IOException;
 import java.nio.file.Files;

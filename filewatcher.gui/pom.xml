@@ -21,6 +21,10 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
 	</repositories>
 
 	<dependencies>
@@ -92,9 +96,9 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>xdean</groupId>
+			<groupId>com.github.XDean</groupId>
 			<artifactId>JavaFX-EX</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.2-571629692b-1</version>
 		</dependency>
 	</dependencies>
 

@@ -26,6 +26,19 @@
 
 	<modules>
 		<module>filewatcher</module>
-		<module>filewatcher.gui</module>
 	</modules>
+	<profiles>
+		<profile>
+			<id>app</id>
+			<modules>
+				<module>filewatcher.app</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>gui</id>
+			<modules>
+				<module>filewatcher.gui</module>
+			</modules>
+		</profile>
+	</profiles>
 </project>

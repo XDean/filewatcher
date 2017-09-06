@@ -26,7 +26,6 @@
 
 	<modules>
 		<module>filewatcher</module>
-		<module>filewatcher.app</module>
 		<module>filewatcher.gui</module>
 	</modules>
 </project>
